@@ -5,11 +5,11 @@ import { ExternalLink, Github } from 'lucide-react';
 const projects = [
   {
     title: "Faiwel Wolfsdorf",
-    description: "Sitio web para un artista surrealista: un viaje cromático desde Varsovia hasta Sudamérica, con galería de obra y experiencia inmersiva.",
+    description: "Sitio web para un artista surrealista: un viaje cromático desde Varsovia hasta Sudamérica, con galería de obra multiidioma y experiencia inmersiva.",
     image: "/projects/faiwelwolfsdorf.png",
-    tags: ["React", "TypeScript", "Tailwind"],
+    tags: ["React", "Vite", "Tailwind", "Framer Motion"],
     link: "https://faiwelwolfsdorf.com",
-    github: ""
+    github: "https://github.com/mirtalonghi/wolfsdorff"
   },
   {
     title: "E-commerce Platform",
