@@ -328,8 +328,8 @@ const Hero: React.FC = () => {
             <span className="text-blue-400 text-sm font-medium">👋 Disponible para trabajar</span>
           </motion.div>
 
-          <h1 className="text-5xl md:text-7xl font-bold text-white mb-4 tracking-tight">
-            Hola, soy <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">Tu Nombre</span>
+          <h1 className="font-display text-5xl md:text-7xl font-bold text-white mb-4 tracking-tight">
+            Hola, soy <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">Moebius</span>
           </h1>
           <p className="text-xl md:text-2xl text-slate-300 mb-8 font-light">
             Desarrollador Full Stack & Diseñador UI/UX
