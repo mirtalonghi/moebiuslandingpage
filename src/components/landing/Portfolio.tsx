@@ -4,6 +4,14 @@ import { ExternalLink, Github } from 'lucide-react';
 
 const projects = [
   {
+    title: "Faiwel Wolfsdorf",
+    description: "Sitio web para un artista surrealista: un viaje cromático desde Varsovia hasta Sudamérica, con galería de obra multiidioma y experiencia inmersiva.",
+    image: "/projects/faiwelwolfsdorf.png",
+    tags: ["React", "Vite", "Tailwind", "Framer Motion"],
+    link: "https://faiwelwolfsdorf.com",
+    github: "https://github.com/mirtalonghi/wolfsdorff"
+  },
+  {
     title: "E-commerce Platform",
     description: "Una plataforma completa con React, Node.js y Stripe.",
     image: "https://images.unsplash.com/photo-1557821552-17105176677c?auto=format&fit=crop&q=80&w=800",
@@ -62,12 +70,28 @@ const Portfolio: React.FC = () => {
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4">
-                  <a href={project.link} className="p-2 bg-white rounded-full text-slate-950 hover:bg-blue-500 hover:text-white transition-colors">
-                    <ExternalLink size={20} />
-                  </a>
-                  <a href={project.github} className="p-2 bg-white rounded-full text-slate-950 hover:bg-blue-500 hover:text-white transition-colors">
-                    <Github size={20} />
-                  </a>
+                  {project.link && (
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Ver el sitio de ${project.title}`}
+                      className="p-2 bg-white rounded-full text-slate-950 hover:bg-blue-500 hover:text-white transition-colors"
+                    >
+                      <ExternalLink size={20} />
+                    </a>
+                  )}
+                  {project.github && (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Ver el código de ${project.title} en GitHub`}
+                      className="p-2 bg-white rounded-full text-slate-950 hover:bg-blue-500 hover:text-white transition-colors"
+                    >
+                      <Github size={20} />
+                    </a>
+                  )}
                 </div>
               </div>
               <div className="p-6">

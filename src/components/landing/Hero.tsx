@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Download, ChevronDown, Play, Pause } from 'lucide-react';
-import * as THREE from 'three';
 import { hapticFeedback } from '../../utils/mobileFeatures';
 
 const Hero: React.FC = () => {
@@ -18,7 +17,13 @@ const Hero: React.FC = () => {
     const container = containerRef.current;
     if (!container) return;
 
-    const scene = new THREE.Scene();
+    let cancelled = false;
+    let cleanup: (() => void) | undefined;
+
+    import('three').then((THREE) => {
+      if (cancelled || !container) return;
+
+      const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(
       65,
       window.innerWidth / window.innerHeight,
@@ -253,7 +258,7 @@ const Hero: React.FC = () => {
 
     window.addEventListener('resize', handleResize);
 
-    return () => {
+    cleanup = () => {
       window.removeEventListener('resize', handleResize);
       window.cancelAnimationFrame(animationFrameId);
       audio.pause();
@@ -265,6 +270,12 @@ const Hero: React.FC = () => {
       geometry.dispose();
       material.dispose();
       renderer.dispose();
+    };
+    });
+
+    return () => {
+      cancelled = true;
+      cleanup?.();
     };
   }, [audioUrl]);
 
@@ -323,15 +334,16 @@ const Hero: React.FC = () => {
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.8 }}
-            className="inline-block mb-4 px-4 py-1.5 bg-blue-500/20 border border-blue-500/30 rounded-full"
+            className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 bg-white/5 border border-white/10 rounded-full"
           >
-            <span className="text-blue-400 text-sm font-medium">👋 Disponible para trabajar</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+            <span className="text-slate-300 text-sm font-medium tracking-tight">Disponible para trabajar</span>
           </motion.div>
 
-          <h1 className="text-5xl md:text-7xl font-bold text-white mb-4 tracking-tight">
-            Hola, soy <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">Tu Nombre</span>
+          <h1 className="font-display text-5xl md:text-7xl font-semibold text-white mb-4 tracking-tighter">
+            Hola, soy <span className="text-white">Moebius</span>
           </h1>
-          <p className="text-xl md:text-2xl text-slate-300 mb-8 font-light">
+          <p className="text-lg md:text-xl text-slate-400 mb-8 font-light tracking-tight">
             Desarrollador Full Stack & Diseñador UI/UX
           </p>
 
