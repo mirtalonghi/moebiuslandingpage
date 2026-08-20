@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Download, ChevronDown, Play, Pause } from 'lucide-react';
-import * as THREE from 'three';
 import { hapticFeedback } from '../../utils/mobileFeatures';
 
 const Hero: React.FC = () => {
@@ -18,7 +17,13 @@ const Hero: React.FC = () => {
     const container = containerRef.current;
     if (!container) return;
 
-    const scene = new THREE.Scene();
+    let cancelled = false;
+    let cleanup: (() => void) | undefined;
+
+    import('three').then((THREE) => {
+      if (cancelled || !container) return;
+
+      const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(
       65,
       window.innerWidth / window.innerHeight,
@@ -253,7 +258,7 @@ const Hero: React.FC = () => {
 
     window.addEventListener('resize', handleResize);
 
-    return () => {
+    cleanup = () => {
       window.removeEventListener('resize', handleResize);
       window.cancelAnimationFrame(animationFrameId);
       audio.pause();
@@ -265,6 +270,12 @@ const Hero: React.FC = () => {
       geometry.dispose();
       material.dispose();
       renderer.dispose();
+    };
+    });
+
+    return () => {
+      cancelled = true;
+      cleanup?.();
     };
   }, [audioUrl]);
 
