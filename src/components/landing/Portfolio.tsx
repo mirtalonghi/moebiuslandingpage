@@ -6,7 +6,7 @@ const projects = [
   {
     title: "Faiwel Wolfsdorf",
     description: "Sitio web para un artista surrealista: un viaje cromático desde Varsovia hasta Sudamérica, con galería de obra multiidioma y experiencia inmersiva.",
-    image: "/projects/faiwelwolfsdorf.png",
+    image: "/projects/faiwelwolfsdorf.webp",
     tags: ["React", "Vite", "Tailwind", "Framer Motion"],
     link: "https://faiwelwolfsdorf.com",
     github: "https://github.com/mirtalonghi/wolfsdorff"
@@ -67,6 +67,8 @@ const Portfolio: React.FC = () => {
                 <img
                   src={project.image}
                   alt={project.title}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4">

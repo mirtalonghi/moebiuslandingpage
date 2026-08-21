@@ -150,6 +150,7 @@ const Hero: React.FC = () => {
     const audio = new Audio(audioUrl);
     audio.loop = true;
     audio.crossOrigin = 'anonymous';
+    audio.preload = 'none';
     audioRef.current = audio;
 
     const handleCanPlay = () => {
@@ -167,7 +168,6 @@ const Hero: React.FC = () => {
 
     audio.addEventListener('canplaythrough', handleCanPlay);
     audio.addEventListener('error', handleAudioError);
-    audio.load();
 
     const getAverageVolume = (
       array: Uint8Array,
