@@ -341,7 +341,7 @@ const Hero: React.FC = () => {
           </motion.div>
 
           <h1 className="font-display text-5xl md:text-7xl font-semibold text-white mb-4 tracking-tighter">
-            Hola, soy <span className="text-white">Moebius</span>
+            Hola, soy <span className="text-white">Möbius Lab</span>
           </h1>
           <p className="text-lg md:text-xl text-slate-400 mb-8 font-light tracking-tight">
             Desarrollador Full Stack & Diseñador UI/UX
