@@ -15,6 +15,7 @@ const projects = [
     title: "LOBA BAGUES",
     description: "Tienda online de cosmética con catálogo por categorías, promociones, carrito de compras y panel de gestión con autenticación.",
     image: "/projects/loba-bagues.webp",
+    imagePosition: "object-top",
     tags: ["Next.js", "TypeScript", "Tailwind", "Better Auth"],
     link: "https://loba-bagues.vercel.app",
     github: "https://github.com/mirtalonghi/LOBA_BAGUES"
@@ -77,7 +78,7 @@ const Portfolio: React.FC = () => {
                   alt={project.title}
                   loading="lazy"
                   decoding="async"
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  className={`w-full h-full object-cover ${project.imagePosition ?? ''} group-hover:scale-110 transition-transform duration-500`}
                 />
                 <div className="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4">
                   {project.link && (
