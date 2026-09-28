@@ -12,6 +12,14 @@ const projects = [
     github: "https://github.com/mirtalonghi/wolfsdorff"
   },
   {
+    title: "LOBA BAGUES",
+    description: "Tienda online de cosmética con catálogo por categorías, promociones, carrito de compras y panel de gestión con autenticación.",
+    image: "/projects/loba-bagues.webp",
+    tags: ["Next.js", "TypeScript", "Tailwind", "Better Auth"],
+    link: "https://loba-bagues.vercel.app",
+    github: "https://github.com/mirtalonghi/LOBA_BAGUES"
+  },
+  {
     title: "E-commerce Platform",
     description: "Una plataforma completa con React, Node.js y Stripe.",
     image: "https://images.unsplash.com/photo-1557821552-17105176677c?auto=format&fit=crop&q=80&w=800",
